@@ -1,0 +1,3 @@
+namespace CaracteristicasPersonajes;
+
+public class{}
