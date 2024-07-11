@@ -1,0 +1,15 @@
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\obj\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.GeneratedMSBuildEditorConfig.editorconfig
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\obj\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.AssemblyInfoInputs.cache
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\obj\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.AssemblyInfo.cs
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\obj\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.csproj.CoreCompileInputs.cache
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\obj\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.sourcelink.json
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\bin\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.exe
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\bin\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.deps.json
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\bin\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.runtimeconfig.json
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\bin\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.dll
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\bin\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.pdb
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\obj\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.dll
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\obj\Debug\net8.0\refint\tl1-proyectofinal2024-lisandrocoronel3444.dll
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\obj\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.pdb
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\obj\Debug\net8.0\tl1-proyectofinal2024-lisandrocoronel3444.genruntimeconfig.cache
+C:\UNIVERSIDAD\TALLER DE LENGUAJES\Proyecto-CoronelLisandro-tl1\tl1-proyectofinal2024-lisandrocoronel3444\obj\Debug\net8.0\ref\tl1-proyectofinal2024-lisandrocoronel3444.dll
