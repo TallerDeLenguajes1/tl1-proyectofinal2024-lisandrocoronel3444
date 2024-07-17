@@ -31,13 +31,31 @@ using escenarioBatalla;
             int eleccion;
             do
             {
-                Console.Write($"Selecciona un número del 1 al {personajes.Count}: ");
+                Console.Write($"Selecciona un número del 1 al {personajes.Count} para elegir tu personaje: ");
             } while (!int.TryParse(Console.ReadLine(), out eleccion) || eleccion < 1 || eleccion > personajes.Count);
 
             Personaje personajeElegido = personajes[eleccion - 1];
             Console.WriteLine("Has elegido a:");
             personajeElegido.MostrarInformacion();
             Batalla batalla = new Batalla();
-            batalla.IniciarBatalla(personajeElegido, personajes[1]);
+
+for (int i = 0; i < personajes.Count; i++){
+    if (i != eleccion - 1)
+    {
+        Console.WriteLine($"\nBatalla contra {personajes[i].GetNombre()} ({personajes[i].GetTipo()}):");
+        batalla.IniciarBatalla(personajeElegido, personajes[i]);
+
+        if (!personajeElegido.EstaVivo())
+        {
+            Console.WriteLine("¡Has sido derrotado!");
+            break;
+        }
+    }
+}
+
+if (personajeElegido.EstaVivo())
+{
+    Console.WriteLine("¡Has vencido a todos los oponentes!");
+}
         
     

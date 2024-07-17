@@ -86,7 +86,7 @@ public class Personaje
             }
             int ataque = (int)(ataqueBase + (multiplicador * ataqueBase));
             int defensa = Enemigo.GetArmadura() * Enemigo.GetVelocidad();
-            const int constanteDeAjuste = 10;
+            const int constanteDeAjuste = 5;
 
             int danio = ((ataque) - defensa) / constanteDeAjuste;
             if (danio > 0)
@@ -113,7 +113,7 @@ public class Personaje
         }
         public void Curar()
         {
-            this.salud += 10; // Cura una cantidad fija de salud
+            this.salud += 15; // Cura una cantidad fija de salud
             if (this.salud > 100)
             {
                 this.salud = 100;
@@ -123,5 +123,30 @@ public class Personaje
         {
             return this.salud > 0;
         }
+        public void RealizarAccionAutomatica(Personaje enemigo)
+{
+    Random random = new Random();
+    int num = random.Next(1, 7);
+
+    if (num == 6)
+    {
+        this.Defender();
+        Console.WriteLine($"{this.nombre} se defiende.");
+    }
+    else if (num == 3 || num == 1)
+    {
+        this.Curar();
+        Console.WriteLine($"{this.nombre} se cura 15 puntos de salud.");
+    }
+    else
+    {
+        this.Atacar(enemigo);
+        Console.WriteLine($"{this.nombre} ataca a {enemigo.GetNombre()}.");
+    }
+}
 
     }
+
+
+
+
