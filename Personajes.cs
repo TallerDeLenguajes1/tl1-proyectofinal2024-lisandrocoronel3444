@@ -84,9 +84,9 @@ public class Personaje
                     multiplicador = 1.00;
                     break;
             }
-            int ataque = (int)(ataqueBase * multiplicador);
+            int ataque = (int)(ataqueBase + (multiplicador * ataqueBase));
             int defensa = Enemigo.GetArmadura() * Enemigo.GetVelocidad();
-            const int constanteDeAjuste = 500;
+            const int constanteDeAjuste = 10;
 
             int danio = ((ataque) - defensa) / constanteDeAjuste;
             if (danio > 0)
