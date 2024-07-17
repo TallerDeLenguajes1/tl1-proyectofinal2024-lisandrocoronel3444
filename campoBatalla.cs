@@ -6,6 +6,7 @@ public class Batalla
 {
     public void IniciarBatalla(Personaje personaje1, Personaje personaje2)
 {
+    personaje1.CurarTotalmente();
     Console.WriteLine($"Comienza la batalla entre {personaje1.GetNombre()} y {personaje2.GetNombre()}");
 
     while (personaje1.GetSalud() > 0 && personaje2.GetSalud() > 0)

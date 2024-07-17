@@ -124,26 +124,30 @@ public class Personaje
             return this.salud > 0;
         }
         public void RealizarAccionAutomatica(Personaje enemigo)
-{
-    Random random = new Random();
-    int num = random.Next(1, 7);
+        {
+             Random random = new Random();
+            int num = random.Next(1, 7);
 
-    if (num == 6)
-    {
-        this.Defender();
-        Console.WriteLine($"{this.nombre} se defiende.");
-    }
-    else if (num == 3 || num == 1)
-    {
-        this.Curar();
-        Console.WriteLine($"{this.nombre} se cura 15 puntos de salud.");
-    }
-    else
-    {
-        this.Atacar(enemigo);
-        Console.WriteLine($"{this.nombre} ataca a {enemigo.GetNombre()}.");
-    }
-}
+            if (num == 6)
+            {
+                this.Defender();
+                Console.WriteLine($"{this.nombre} se defiende.");
+            }
+            else if (num == 3 || num == 1)
+            {
+                this.Curar();
+                Console.WriteLine($"{this.nombre} se cura 15 puntos de salud.");
+            }
+            else
+            {
+                this.Atacar(enemigo);
+                Console.WriteLine($"{this.nombre} ataca a {enemigo.GetNombre()}.");
+            }
+        }
+        public void CurarTotalmente()
+        {
+            this.salud = 100;
+        }
 
     }
 
