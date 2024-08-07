@@ -19,11 +19,11 @@ public class Batalla
         Console.WriteLine($"Turno de {personaje1.GetNombre()}:");
         RealizarAccion(personaje1, personaje2);
 
-        // Verificar si personaje2 sigue vivo después del ataque
+        // Verificar si el enemigo sigue vivo después del ataque
         if (personaje2.GetSalud() <= 0)
             break;
 
-        // Turno de personaje2 (enemigo)
+        // Turno de personaje2 (enemigo realiza un accion al azar)
         Console.WriteLine($"Turno de {personaje2.GetNombre()}:");
         personaje2.RealizarAccionAutomatica(personaje1);
 
