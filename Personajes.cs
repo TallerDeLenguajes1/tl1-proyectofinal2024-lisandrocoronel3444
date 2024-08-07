@@ -1,89 +1,96 @@
 using System.Collections;
 
 namespace personasjesDelJuego;
-public class Personaje
-{
-    // Datos
-    private string tipo;
-    private string nombre;
-    private string apodo;
-    private DateTime fechaDeNacimiento;
-    private int edad;
+using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-    // Características
-    private int velocidad;
-    private int destreza;
-    private int fuerza;
-    private int armadura;
-    private int salud;
-
-    // Constructor
-    public Personaje(string tipo, string nombre, string apodo, DateTime fechaDeNacimiento, int velocidad, int destreza, int fuerza, int armadura)
+    public class Personaje
     {
-        this.tipo = tipo;
-        this.nombre = nombre;
-        this.apodo = apodo;
-        this.fechaDeNacimiento = fechaDeNacimiento;
-        this.edad = DateTime.Now.Year - fechaDeNacimiento.Year;
+        // Datos
+        [JsonInclude]
+        private string tipo;
+        [JsonInclude]
+        private string nombre;
+        [JsonInclude]
+        private string apodo;
+        [JsonInclude]
+        private DateTime fechaDeNacimiento;
+        [JsonInclude]
+        private int edad;
 
-        this.velocidad = velocidad;
-        this.destreza = destreza;
-        this.fuerza = fuerza;
-        this.armadura = armadura;
-        this.salud = 100;
-    }
-    public string GetTipo() => tipo;
-    public string GetNombre() => nombre;
-    public string GetApodo() => apodo;
-    public DateTime GetFechaDeNacimiento() => fechaDeNacimiento;
-    public int GetEdad() => edad;
+        // Características
+        [JsonInclude]
+        private int velocidad;
+        [JsonInclude]
+        private int destreza;
+        [JsonInclude]
+        private int fuerza;
+        [JsonInclude]
+        private int armadura;
+        [JsonInclude]
+        private int salud;
 
-    public int GetVelocidad() => velocidad;
-    public int GetDestreza() => destreza;
-    public int GetFuerza() => fuerza;
-    public int GetArmadura() => armadura;
-    public int GetSalud() => salud;
+        // Constructor
+        public Personaje(string tipo, string nombre, string apodo, DateTime fechaDeNacimiento, int velocidad, int destreza, int fuerza, int armadura)
+        {
+            this.tipo = tipo;
+            this.nombre = nombre;
+            this.apodo = apodo;
+            this.fechaDeNacimiento = fechaDeNacimiento;
+            this.edad = DateTime.Now.Year - fechaDeNacimiento.Year;
 
-    // Método para mostrar información del personaje
-    public void MostrarInformacion()
-    {
-        Console.WriteLine($"Nombre: {nombre} ({apodo})");
-        Console.WriteLine($"Tipo: {tipo}");
-        Console.WriteLine($"Fecha de Nacimiento: {fechaDeNacimiento.ToShortDateString()}");
-        Console.WriteLine($"Edad: {edad}");
-        Console.WriteLine($"Velocidad: {velocidad}");
-        Console.WriteLine($"Destreza: {destreza}");
-        Console.WriteLine($"Fuerza: {fuerza}");
-        Console.WriteLine($"Armadura: {armadura}");
-        Console.WriteLine($"Salud: {salud}");
-    }
-    public void Atacar(Personaje Enemigo){
-        int ataqueBase = GetDestreza() * GetFuerza();
-        Random random = new Random();
-        int suerte = random.Next(1, 7);
-        double multiplicador = 0;
+            this.velocidad = velocidad;
+            this.destreza = destreza;
+            this.fuerza = fuerza;
+            this.armadura = armadura;
+            this.salud = 100;
+        }
 
-        switch (suerte)
+        // Métodos Getter
+        public string GetTipo() => tipo;
+        public string GetNombre() => nombre;
+        public string GetApodo() => apodo;
+        public DateTime GetFechaDeNacimiento() => fechaDeNacimiento;
+        public int GetEdad() => edad;
+        public int GetVelocidad() => velocidad;
+        public int GetDestreza() => destreza;
+        public int GetFuerza() => fuerza;
+        public int GetArmadura() => armadura;
+        public int GetSalud() => salud;
+
+        // Método para mostrar información del personaje
+        public void MostrarInformacion()
+        {
+            Console.WriteLine($"Nombre: {nombre} ({apodo})");
+            Console.WriteLine($"Tipo: {tipo}");
+            Console.WriteLine($"Fecha de Nacimiento: {fechaDeNacimiento.ToShortDateString()}");
+            Console.WriteLine($"Edad: {edad}");
+            Console.WriteLine($"Velocidad: {velocidad}");
+            Console.WriteLine($"Destreza: {destreza}");
+            Console.WriteLine($"Fuerza: {fuerza}");
+            Console.WriteLine($"Armadura: {armadura}");
+            Console.WriteLine($"Salud: {salud}");
+        }
+
+        // Métodos de ataque, recibir daño, defender, curar, etc.
+        public void Atacar(Personaje Enemigo)
+        {
+            int ataqueBase = GetDestreza() * GetFuerza();
+            Random random = new Random();
+            int suerte = random.Next(1, 7);
+            double multiplicador = suerte 
+            switch
             {
-                case 1:
-                    multiplicador = 0.15;
-                    break;
-                case 2:
-                    multiplicador = 0.30;
-                    break;
-                case 3:
-                    multiplicador = 0.45;
-                    break;
-                case 4:
-                    multiplicador = 0.60;
-                    break;
-                case 5:
-                    multiplicador = 0.75;
-                    break;
-                case 6:
-                    multiplicador = 1.00;
-                    break;
-            }
+                1 => 0.15,
+                2 => 0.30,
+                3 => 0.45,
+                4 => 0.60,
+                5 => 0.75,
+                6 => 1.00,
+                _ => 0
+            };
+
             int ataque = (int)(ataqueBase + (multiplicador * ataqueBase));
             int defensa = Enemigo.GetArmadura() * Enemigo.GetVelocidad();
             const int constanteDeAjuste = 5;
@@ -99,6 +106,7 @@ public class Personaje
                 Console.WriteLine($"{Enemigo.GetNombre()} bloqueó el ataque!");
             }
         }
+
         public void RecibirDanio(int danio)
         {
             this.salud -= danio;
@@ -107,10 +115,12 @@ public class Personaje
                 this.salud = 0;
             }
         }
+
         public void Defender()
         {
             this.armadura += 2; // Incrementa la armadura temporalmente
         }
+
         public void Curar()
         {
             this.salud += 15; // Cura una cantidad fija de salud
@@ -119,36 +129,35 @@ public class Personaje
                 this.salud = 100;
             }
         }
-        public bool EstaVivo()
-        {
-            return this.salud > 0;
-        }
+
+        public bool EstaVivo() => this.salud > 0;
+
         public void RealizarAccionAutomatica(Personaje enemigo)
         {
-             Random random = new Random();
+            Random random = new Random();
             int num = random.Next(1, 7);
 
             if (num == 6)
             {
-                this.Defender();
+                Defender();
                 Console.WriteLine($"{this.nombre} se defiende.");
             }
             else if (num == 3 || num == 1)
             {
-                this.Curar();
+                Curar();
                 Console.WriteLine($"{this.nombre} se cura 15 puntos de salud.");
             }
             else
             {
-                this.Atacar(enemigo);
+                Atacar(enemigo);
                 Console.WriteLine($"{this.nombre} ataca a {enemigo.GetNombre()}.");
             }
         }
+
         public void CurarTotalmente()
         {
             this.salud = 100;
         }
-
     }
 
 

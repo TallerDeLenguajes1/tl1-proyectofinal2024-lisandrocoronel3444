@@ -1,21 +1,37 @@
 ﻿using personasjesDelJuego;
 using escenarioBatalla;
+using persistenciaJson;
 
-            List<Personaje> personajes = new List<Personaje>();
-            //VELOCIDAD, DESTREZA, FUERZA, ARMADURA, SALUD;
+        List<Personaje> personajes = CrearPersonajes();
+        PersonajesJson.GuardarPersonajes(personajes, "personajes.json");
+         if (PersonajesJson.Existe("personajes.json"))
+        {
+            Console.WriteLine("El archivo de personajes existe y tiene datos.");
+        }
+        else
+        {
+            Console.WriteLine("El archivo de personajes no existe o está vacío.");
+        }
 
-            personajes.Add(new Personaje("Guerrero", "Leonard", "Espada de Fuego", new DateTime(1990, 1, 1), 4, 7, 10, 3));
-            personajes.Add(new Personaje("Mago", "Merlin", "El Sabio", new DateTime(1995, 5, 15), 6, 10, 7, 3));
-            personajes.Add(new Personaje("Arquero", "Kay", "La torreta", new DateTime(1992, 7, 20), 10, 8, 6, 2));
+        List<Personaje> personajesLeidos = PersonajesJson.LeerPersonajes("personajes.json");
+        
 
-// Agregar personajes adicionales
-            personajes.Add(new Personaje("Berserker", "Aldric", "El Martillo", new DateTime(1988, 4, 10), 5, 6, 9, 4));
-            personajes.Add(new Personaje("Hechicera", "Morgana", "La Hechicera", new DateTime(1994, 3, 25), 7, 9, 6, 3));
-            personajes.Add(new Personaje("Asesino", "Robin", "El Ágil", new DateTime(1993, 9, 13), 9, 7, 5, 3));
-            personajes.Add(new Personaje("Paladín", "Thorin", "El Valiente", new DateTime(1987, 12, 5), 6, 8, 8, 5));
-            personajes.Add(new Personaje("Druida", "Gandalf", "El Blanco", new DateTime(1985, 11, 19), 5, 10, 6, 4));
-            personajes.Add(new Personaje("Cazadora", "Eleanor", "La Francotiradora", new DateTime(1991, 6, 22), 8, 9, 7, 3));
-            personajes.Add(new Personaje("Barbaro", "Bjorn", "El Feroz", new DateTime(1989, 8, 30), 7, 6, 9, 4));
+        static List<Personaje> CrearPersonajes()
+        {
+          return new List<Personaje>
+          {
+            new Personaje("Guerrero", "Leonard", "Espada de Fuego", new DateTime(1990, 1, 1), 4, 7, 10, 3),
+            new Personaje("Mago", "Merlin", "El Sabio", new DateTime(1995, 5, 15), 6, 10, 7, 3),
+            new Personaje("Arquero", "Kay", "La Torreta", new DateTime(1992, 7, 20), 10, 8, 6, 2),
+            new Personaje("Berserker", "Aldric", "El Martillo", new DateTime(1988, 4, 10), 5, 6, 9, 4),
+            new Personaje("Hechicera", "Morgana", "La Hechicera", new DateTime(1994, 3, 25), 7, 9, 6, 3),
+            new Personaje("Asesino", "Robin", "El Ágil", new DateTime(1993, 9, 13), 9, 7, 5, 3),
+            new Personaje("Paladín", "Thorin", "El Valiente", new DateTime(1987, 12, 5), 6, 8, 8, 5),
+            new Personaje("Druida", "Gandalf", "El Blanco", new DateTime(1985, 11, 19), 5, 10, 6, 4),
+            new Personaje("Cazadora", "Eleanor", "La Francotiradora", new DateTime(1991, 6, 22), 8, 9, 7, 3),
+            new Personaje("Barbaro", "Bjorn", "El Feroz", new DateTime(1989, 8, 30), 7, 6, 9, 4)
+          };
+        }
 
             ContarHistoria();
 
