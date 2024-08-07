@@ -5,6 +5,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+
     public class Personaje
     {
         // Datos
@@ -79,17 +80,29 @@ using System.Text.Json.Serialization;
             int ataqueBase = GetDestreza() * GetFuerza();
             Random random = new Random();
             int suerte = random.Next(1, 7);
-            double multiplicador = suerte 
-            switch
+            double multiplicador = 0;
+
+            switch (suerte)
             {
-                1 => 0.15,
-                2 => 0.30,
-                3 => 0.45,
-                4 => 0.60,
-                5 => 0.75,
-                6 => 1.00,
-                _ => 0
-            };
+                case 1:
+                    multiplicador = 0.15;
+                    break;
+                case 2:
+                    multiplicador = 0.30;
+                    break;
+                case 3:
+                    multiplicador = 0.45;
+                    break;
+                case 4:
+                    multiplicador = 0.60;
+                    break;
+                case 5:
+                    multiplicador = 0.75;
+                    break;
+                case 6:
+                    multiplicador = 1.00;
+                    break;
+            }
 
             int ataque = (int)(ataqueBase + (multiplicador * ataqueBase));
             int defensa = Enemigo.GetArmadura() * Enemigo.GetVelocidad();

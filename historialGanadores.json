@@ -1,0 +1,18 @@
+[
+  {
+    "Ganador": {
+      "tipo": "Guerrero",
+      "nombre": "Leonard",
+      "apodo": "Espada de Fuego",
+      "fechaDeNacimiento": "1990-01-01T00:00:00",
+      "edad": 34,
+      "velocidad": 4,
+      "destreza": 7,
+      "fuerza": 100,
+      "armadura": 3,
+      "salud": 100
+    },
+    "Fecha": "2024-08-07T18:46:49.903607-03:00",
+    "InformacionAdicional": "Victoria en combate"
+  }
+]

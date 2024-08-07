@@ -20,7 +20,7 @@ using persistenciaJson;
         {
           return new List<Personaje>
           {
-            new Personaje("Guerrero", "Leonard", "Espada de Fuego", new DateTime(1990, 1, 1), 4, 7, 10, 3),
+            new Personaje("Guerrero", "Leonard", "Espada de Fuego", new DateTime(1990, 1, 1), 4, 7, 100, 3),
             new Personaje("Mago", "Merlin", "El Sabio", new DateTime(1995, 5, 15), 6, 10, 7, 3),
             new Personaje("Arquero", "Kay", "La Torreta", new DateTime(1992, 7, 20), 10, 8, 6, 2),
             new Personaje("Berserker", "Aldric", "El Martillo", new DateTime(1988, 4, 10), 5, 6, 9, 4),
@@ -75,6 +75,15 @@ if (personajeElegido.EstaVivo())
 {
     Console.WriteLine("¡Has vencido a todos los oponentes!");
 }
+Historial.GuardarGanador(new Historial.RegistroGanador
+{
+    Ganador = personajeElegido,
+    Fecha = DateTime.Now,
+    InformacionAdicional = "Victoria en combate"
+}, "historialGanadores.json");
+
+// Mostrar el podio
+Historial.MostrarPodio("historialGanadores.json");
         
     
 static void ContarHistoria()
