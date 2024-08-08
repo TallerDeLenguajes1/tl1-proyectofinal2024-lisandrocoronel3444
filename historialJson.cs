@@ -13,9 +13,9 @@ namespace persistenciaJson
         // Estructura para almacenar información relevante del ganador
         public class RegistroGanador
         {
-            public Personaje Ganador { get; set; }
+            public required Personaje Ganador { get; set; }
             public DateTime Fecha { get; set; }
-            public string InformacionAdicional { get; set; }
+            public required string InformacionAdicional { get; set; }
         }
 
         // Guardar información del ganador en formato JSON
@@ -64,9 +64,8 @@ namespace persistenciaJson
             string jsonString = JsonSerializer.Serialize(ganadores, opciones);
             File.WriteAllText(nombreArchivo, jsonString);
 
-            // Depuración
-            Console.WriteLine($"Ganador guardado en {nombreArchivo}");
-            Console.WriteLine($"Contenido del archivo:\n{jsonString}");
+            
+            
         }
 
         // Leer la lista de ganadores desde un archivo JSON
@@ -82,7 +81,6 @@ namespace persistenciaJson
                 string jsonString = File.ReadAllText(nombreArchivo);
 
                 // Depuración
-                Console.WriteLine($"Contenido leído del archivo {nombreArchivo}:\n{jsonString}");
 
                 return JsonSerializer.Deserialize<List<RegistroGanador>>(jsonString);
             }

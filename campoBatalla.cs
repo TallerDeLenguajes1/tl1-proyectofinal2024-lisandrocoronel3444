@@ -1,6 +1,6 @@
+using personasjesDelJuego;
 namespace escenarioBatalla;
 
-    using personasjesDelJuego;
 
     public class Batalla
     {
@@ -25,7 +25,9 @@ namespace escenarioBatalla;
 
                 // Verificar si el enemigo sigue vivo después del ataque
                 if (personaje2.GetSalud() <= 0)
+                {
                     break;
+                }
 
                 // Turno de personaje2 (enemigo realiza una acción al azar)
                 Console.WriteLine($"Turno de {personaje2.GetNombre()}:");
@@ -33,7 +35,9 @@ namespace escenarioBatalla;
 
                 // Verificar si el personaje1 sigue vivo después del ataque
                 if (personaje1.GetSalud() <= 0)
+                {
                     break;
+                }
 
                 Console.WriteLine();
             }
@@ -50,23 +54,29 @@ namespace escenarioBatalla;
         }
 
         // Método para que el atacante realice una acción (atacar, defender o curarse)
-        private void RealizarAccion(Personaje atacante, Personaje defensor)
+         private void RealizarAccion(Personaje atacante, Personaje defensor)
         {
-            // Mostrar opciones disponibles para la acción
+    // Mostrar opciones disponibles para la acción
             Console.WriteLine("Elige una acción:");
             Console.WriteLine("1. Atacar");
-            Console.WriteLine("2. Defender");
+                    Console.WriteLine("2. Defender");
             Console.WriteLine("3. Curarse");
 
             string opcion;
             do
             {
-                // Leer opción del usuario
-                Console.Write("Selecciona una opción: ");
+        // Leer opción del usuario
+                        Console.Write("Selecciona una opción (1, 2 o 3): ");
                 opcion = Console.ReadLine();
+        
+                if (opcion != "1" && opcion != "2" && opcion != "3")
+                {
+                            Console.WriteLine("Opción no válida. Por favor, elige 1, 2 o 3.");
+                }
+        
             } while (opcion != "1" && opcion != "2" && opcion != "3");
 
-            // Ejecutar la acción seleccionada
+    // Ejecutar la acción seleccionada
             switch (opcion)
             {
                 case "1":
@@ -80,4 +90,7 @@ namespace escenarioBatalla;
                     break;
             }
         }
+
     }
+        
+    

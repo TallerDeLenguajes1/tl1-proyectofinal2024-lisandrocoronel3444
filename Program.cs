@@ -36,14 +36,13 @@ using persistenciaJson;
         // Muestra el menú principal y maneja la elección del usuario
         static void MostrarMenuPrincipal()
 {
-    
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("======== MENU PRINCIPAL ========");
     Console.ResetColor();
     Console.WriteLine("1. Jugar");
     Console.WriteLine("2. Ver historial");
     Console.WriteLine("3. Salir");
-    Console.Write("Selecciona una opción: ");
+    Console.Write("Selecciona una opción (1, 2 o 3): ");
 
     string opcion = Console.ReadLine();
     switch (opcion)
@@ -63,6 +62,7 @@ using persistenciaJson;
             break;
     }
 }
+
 static void Salir()
 {
     Console.WriteLine("Gracias por jugar. ¡Hasta luego!");
@@ -71,72 +71,82 @@ static void Salir()
 
         // Maneja la lógica para jugar
         static void Jugar()
+{
+    List<Personaje> personajes = CrearPersonajes();
+
+    // Mostrar los personajes y permitir que el usuario elija
+    Console.WriteLine("Elige tu personaje para el combate:");
+    for (int i = 0; i < personajes.Count; i++)
+    {
+        Console.WriteLine($"Personaje {i + 1}:");
+        personajes[i].MostrarInformacion();
+        Console.WriteLine();
+    }
+
+    int eleccion;
+    do
+    {
+        Console.Write($"Selecciona un número del 1 al {personajes.Count}: ");
+        if (!int.TryParse(Console.ReadLine(), out eleccion) || eleccion < 1 || eleccion > personajes.Count)
         {
-            List<Personaje> personajes = CrearPersonajes();
+            Console.WriteLine($"Entrada no válida. Por favor, elige un número entre 1 y {personajes.Count}.");
+        }
+    } while (eleccion < 1 || eleccion > personajes.Count);
 
-            // Mostrar los personajes y permitir que el usuario elija
-            Console.WriteLine("Elige tu personaje para el combate:");
-            for (int i = 0; i < personajes.Count; i++)
+    Personaje personajeElegido = personajes[eleccion - 1];
+    Console.WriteLine("Has elegido a:");
+    personajeElegido.MostrarInformacion();
+
+    // Iniciar la batalla
+    Batalla batalla = new Batalla();
+    for (int i = 0; i < personajes.Count; i++)
+    {
+        if (i != eleccion - 1)
+        {
+            Console.WriteLine($"\nBatalla contra {personajes[i].GetNombre()} ({personajes[i].GetTipo()}):");
+            batalla.IniciarBatalla(personajeElegido, personajes[i]);
+
+            if (!personajeElegido.EstaVivo())
             {
-                Console.WriteLine($"Personaje {i + 1}:");
-                personajes[i].MostrarInformacion();
-                Console.WriteLine();
-            }
-
-            int eleccion;
-            do
-            {
-                Console.Write($"Selecciona un número del 1 al {personajes.Count} para elegir tu personaje: ");
-            } while (!int.TryParse(Console.ReadLine(), out eleccion) || eleccion < 1 || eleccion > personajes.Count);
-
-            Personaje personajeElegido = personajes[eleccion - 1];
-            Console.WriteLine("Has elegido a:");
-            personajeElegido.MostrarInformacion();
-
-            // Iniciar la batalla
-            Batalla batalla = new Batalla();
-            for (int i = 0; i < personajes.Count; i++)
-            {
-                if (i != eleccion - 1)
-                {
-                    Console.WriteLine($"\nBatalla contra {personajes[i].GetNombre()} ({personajes[i].GetTipo()}):");
-                    batalla.IniciarBatalla(personajeElegido, personajes[i]);
-
-                    if (!personajeElegido.EstaVivo())
-                    {
-                        Console.WriteLine("¡Has sido derrotado!");
-                        break;
-                    }
-                }
-            }
-
-            if (personajeElegido.EstaVivo())
-            {
-                Console.WriteLine("¡Has vencido a todos los oponentes!");
-            }
-
-            // Guardar el ganador en el historial
-            Historial.GuardarGanador(new Historial.RegistroGanador
-            {
-                Ganador = personajeElegido,
-                Fecha = DateTime.Now,
-                InformacionAdicional = "Victorias: 1" // O puedes calcular el conteo de victorias aquí
-            }, "historialGanadores.json");
-
-            // Mostrar el podio
-            Historial.MostrarPodio("historialGanadores.json");
-
-            // Preguntar si el usuario quiere jugar otra vez
-            Console.WriteLine("¿Quieres jugar otra vez? (s/n)");
-            if (Console.ReadLine()?.ToLower() == "s")
-            {
-                Jugar();
-            }
-            else
-            {
-                MostrarMenuPrincipal();
+                Console.WriteLine("¡Has sido derrotado!");
+                break;
             }
         }
+    }
+
+    if (personajeElegido.EstaVivo())
+    {
+        Console.WriteLine("¡Has vencido a todos los oponentes!");
+    }
+
+    // Guardar el ganador en el historial
+    Historial.GuardarGanador(new Historial.RegistroGanador
+    {
+        Ganador = personajeElegido,
+        Fecha = DateTime.Now,
+        InformacionAdicional = "Victorias: 1" // O puedes calcular el conteo de victorias aquí
+    }, "historialGanadores.json");
+
+    // Mostrar el podio
+    Historial.MostrarPodio("historialGanadores.json");
+
+    // Preguntar si el usuario quiere jugar otra vez
+    Console.WriteLine("¿Quieres jugar otra vez? (s/n)");
+    string respuesta = Console.ReadLine().ToLower();
+    if (respuesta == "s")
+    {
+        Jugar();
+    }
+    else if (respuesta == "n")
+    {
+        MostrarMenuPrincipal();
+    }
+    else
+    {
+        Console.WriteLine("Respuesta no válida. Regresando al menú principal.");
+        MostrarMenuPrincipal();
+    }
+}
 
         // Muestra el historial de ganadores
         static void VerHistorial()
