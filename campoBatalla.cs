@@ -50,6 +50,7 @@ namespace escenarioBatalla
             // Determinar el resultado de la batalla y mostrar el ganador
             Console.ForegroundColor = personaje1.GetSalud() > 0 ? ConsoleColor.Yellow : ConsoleColor.Red;
             Console.WriteLine($"{(personaje1.GetSalud() > 0 ? personaje1.GetNombre() : personaje2.GetNombre())} ha ganado la batalla!");
+            Thread.Sleep(3000);
             Console.ResetColor();
         }
 

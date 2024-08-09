@@ -34,9 +34,11 @@ namespace persistenciaJson
 
             // Lee el contenido del archivo JSON
             string jsonString = File.ReadAllText(nombreArchivo);
-            
+
             // Deserializa la cadena JSON a una lista de personajes
+#pragma warning disable CS8603 // Posible tipo de valor devuelto de referencia nulo
             return JsonSerializer.Deserialize<List<Personaje>>(jsonString);
+#pragma warning restore CS8603 // Posible tipo de valor devuelto de referencia nulo
         }
 
         // Verifica si un archivo existe y tiene contenido

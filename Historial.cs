@@ -25,7 +25,7 @@ namespace persistenciaJson
             {
                 Ganador = ganador, // Establece el personaje ganador
                 Fecha = DateTime.Now, // Establece la fecha actual
-                InformacionAdicional = $"Victorias: 1" // Inicializa las victorias en 1
+                InformacionAdicional = $"Victorias: 1🏆" // Inicializa las victorias en 1
             };
 
             // Lee la lista actual de ganadores desde el archivo JSON
