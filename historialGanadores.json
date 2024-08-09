@@ -13,6 +13,38 @@
       "salud": 100
     },
     "Fecha": "2024-08-07T18:46:49.903607-03:00",
-    "InformacionAdicional": "Victorias: 5"
+    "InformacionAdicional": "Victorias: 6"
+  },
+  {
+    "Ganador": {
+      "tipo": "Guerrero",
+      "nombre": "Aatrox",
+      "apodo": "Espada de Fuego",
+      "fechaDeNacimiento": "1990-01-01T00:00:00",
+      "edad": 34,
+      "velocidad": 4,
+      "destreza": 7,
+      "fuerza": 100,
+      "armadura": 3,
+      "salud": 100
+    },
+    "Fecha": "2024-08-08T20:56:51.3527366-03:00",
+    "InformacionAdicional": "Victorias: 2"
+  },
+  {
+    "Ganador": {
+      "tipo": "Mago",
+      "nombre": "Ahri",
+      "apodo": "El Sabio",
+      "fechaDeNacimiento": "1995-05-15T00:00:00",
+      "edad": 29,
+      "velocidad": 6,
+      "destreza": 10,
+      "fuerza": 7,
+      "armadura": 3,
+      "salud": 0
+    },
+    "Fecha": "2024-08-08T21:02:03.2003411-03:00",
+    "InformacionAdicional": "Victorias: 1"
   }
 ]

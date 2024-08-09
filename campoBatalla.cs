@@ -62,30 +62,31 @@ namespace escenarioBatalla;
                     Console.WriteLine("2. Defender");
             Console.WriteLine("3. Curarse");
 
-            string opcion;
+            int opcionElegida;
             do
             {
         // Leer opción del usuario
                         Console.Write("Selecciona una opción (1, 2 o 3): ");
-                opcion = Console.ReadLine();
+                
+                int.TryParse(Console.ReadLine(), out opcionElegida);
         
-                if (opcion != "1" && opcion != "2" && opcion != "3")
+                if (opcionElegida != 1 && opcionElegida != 2 && opcionElegida != 3)
                 {
                             Console.WriteLine("Opción no válida. Por favor, elige 1, 2 o 3.");
                 }
         
-            } while (opcion != "1" && opcion != "2" && opcion != "3");
+            } while (opcionElegida != 1 && opcionElegida != 2 && opcionElegida != 3);
 
     // Ejecutar la acción seleccionada
-            switch (opcion)
+            switch (opcionElegida)
             {
-                case "1":
+                case 1:
                     atacante.Atacar(defensor);
                     break;
-                case "2":
+                case 2:
                     atacante.Defender();
                     break;
-                case "3":
+                case 3:
                     atacante.Curar();
                     break;
             }
