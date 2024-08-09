@@ -4,8 +4,8 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace consumoApi
-{
+namespace consumoApi;
+
     public class ManejoApi
     {
         // Crear una instancia estática de HttpClient para realizar solicitudes HTTP
@@ -44,4 +44,3 @@ namespace consumoApi
             return nombresDePersonajes;
         }
     }
-}

@@ -27,7 +27,8 @@ namespace escenarioBatalla
 
                 if (personaje2.GetSalud() <= 0)
                 {
-                    
+                    Console.WriteLine($"El personaje {personaje2.GetNombre()} Ha muerto!");
+                    Thread.Sleep(3000);
                     
                     break;
                 }
@@ -54,55 +55,55 @@ namespace escenarioBatalla
 
         // Método para que el atacante realice una acción (atacar, defender o curarse)
         private void RealizarAccion(Personaje atacante, Personaje defensor)
-{
-    Console.WriteLine("Elige una acción:");
-    Console.WriteLine("1. Atacar");
-    Console.WriteLine("2. Defender");
-    Console.WriteLine("3. Curarse");
-
-    int opcionElegida;
-    do
-    {
-        Console.Write("Selecciona una opción (1, 2 o 3): ");
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        int.TryParse(Console.ReadLine(), out opcionElegida);
-        Console.ResetColor();
-
-        if (opcionElegida != 1 && opcionElegida != 2 && opcionElegida != 3)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Opción no válida. Por favor, elige 1, 2 o 3.");
-            Console.ResetColor();
+            Console.WriteLine("Elige una acción:");
+            Console.WriteLine("1. Atacar");
+            Console.WriteLine("2. Defender");
+            Console.WriteLine("3. Curarse");
+
+            int opcionElegida;
+            do
+            {
+                Console.Write("Selecciona una opción (1, 2 o 3): ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                int.TryParse(Console.ReadLine(), out opcionElegida);
+                Console.ResetColor();
+
+                if (opcionElegida != 1 && opcionElegida != 2 && opcionElegida != 3)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Opción no válida. Por favor, elige 1, 2 o 3.");
+                    Console.ResetColor();
+                }
+
+            } while (opcionElegida != 1 && opcionElegida != 2 && opcionElegida != 3);
+
+            Console.Clear();
+            Console.WriteLine($"{atacante.GetNombre()} elige su acción:");
+            switch (opcionElegida)
+            {
+                case 1:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("¡Ataque en curso!");
+                    Console.ResetColor();
+                    atacante.Atacar(defensor);
+                    Thread.Sleep(2000);
+                    break;
+                case 2:
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("¡Defensa en curso!");
+                    Console.ResetColor();
+                    atacante.Defender();
+                    Thread.Sleep(2000);
+                    break;
+                case 3:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("¡Curación en curso!");
+                    Console.ResetColor();
+                    atacante.Curar();
+                    Thread.Sleep(2000);
+                    break;
+            }
         }
-
-    } while (opcionElegida != 1 && opcionElegida != 2 && opcionElegida != 3);
-
-    Console.Clear();
-    Console.WriteLine($"{atacante.GetNombre()} elige su acción:");
-    switch (opcionElegida)
-    {
-        case 1:
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("¡Ataque en curso!");
-            Console.ResetColor();
-            atacante.Atacar(defensor);
-            Thread.Sleep(2000);
-            break;
-        case 2:
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("¡Defensa en curso!");
-            Console.ResetColor();
-            atacante.Defender();
-            Thread.Sleep(2000);
-            break;
-        case 3:
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("¡Curación en curso!");
-            Console.ResetColor();
-            atacante.Curar();
-            Thread.Sleep(2000);
-            break;
-    }
-}
     }
 }

@@ -8,6 +8,43 @@ using System.Text.Json.Serialization;
 
     public class Personaje
     {
+        private List<string> frasesAtaque = new List<string>
+        {
+            "¡Prepárate para sentir mi furia!",
+    "¡Esto es solo el comienzo!",
+    "¡Mi espada nunca falla!",
+    "¡Siente el poder de mi ataque!",
+    "¡Te haré lamentar haberte enfrentado a mí!",
+    "¡Mi fuerza es imparable!",
+    "¡Sufre la ira de mi ataque!",
+    "¡Este golpe será el último que sientas!",
+    "¡El suelo temblará bajo mi poder!",
+    "¡Voy a aplastarte con mi fuerza!",
+    "¡Tu derrota es inevitable!",
+    "¡No tienes idea de lo que te espera!",
+    "¡Sentirás el peso de mi furia!",
+    "¡Mi ataque te llevará a la derrota!",
+    "¡Prepárate para la tormenta!"
+        };
+
+        private List<string> frasesDefensa = new List<string>
+        {
+            "¡No pasarás!",
+            "¡Mi escudo te detendrá!",
+            "¡Estás en mi zona de defensa!",
+            "¡Tu ataque no me alcanzará!"
+        };
+
+        private List<string> frasesCuracion = new List<string>
+        {
+            "¡Me recupero con fuerza!",
+            "¡La magia de la curación está funcionando!",
+            "¡No me rendiré tan fácilmente!",
+            "¡Volveré más fuerte que nunca!"
+        };
+
+        private Random random1 = new Random();
+
         // Datos
         [JsonInclude]
         private string tipo;
@@ -113,10 +150,13 @@ using System.Text.Json.Serialization;
             {
                 
                 Console.WriteLine($"{this.nombre} provoca {danio} de daño a {Enemigo.GetNombre()} con un golpe de dado {suerte} (multiplicador {multiplicador * 100}%)");
+                MostrarFrase(frasesAtaque);
                 Thread.Sleep(2000);
                 if(Enemigo.GetSalud() <= 0){
-                Console.WriteLine($"{Enemigo.GetNombre()} Ha muerto a manos de {this.nombre}");
+                    Console.WriteLine($"{Enemigo.GetNombre()} Ha muerto a manos de {this.nombre}");
+
                 }
+                
                 Thread.Sleep(2000);
                 Enemigo.RecibirDanio(danio);
                 
@@ -149,14 +189,19 @@ using System.Text.Json.Serialization;
         public void Defender()
         {
             this.armadura += 1; // Incrementa la armadura temporalmente
+            MostrarFrase(frasesDefensa);
+
         }
 
         public void Curar()
         {
             this.salud += 12; // Cura una cantidad fija de salud
+            MostrarFrase(frasesCuracion);
             if (this.salud > 100)
             {
                 this.salud = 100;
+                
+
             }
         }
 
@@ -173,7 +218,7 @@ using System.Text.Json.Serialization;
                 Console.WriteLine($"{this.nombre} se defiende.");
                 Thread.Sleep(2000);
             }
-            else if (num == 3 || num == 1)
+            else if (num == 3 || num == 1 && enemigo.GetSalud() < 60)
             {
                 Curar();
                 Console.WriteLine($"{this.nombre} se cura 12 puntos de salud.");
@@ -190,6 +235,11 @@ using System.Text.Json.Serialization;
         public void CurarTotalmente()
         {
             this.salud = 100;
+        }
+        private void MostrarFrase(List<string> frases)
+        {
+            int index = random1.Next(frases.Count);
+            Console.WriteLine(frases[index]);
         }
     }
 
