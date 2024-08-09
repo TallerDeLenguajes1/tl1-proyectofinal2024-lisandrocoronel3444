@@ -8,7 +8,6 @@ using consumoApi;
 
 
     
-    
         MostrarHistoria(); // Muestra la historia de forma lenta
         MostrarMenuPrincipal(); // Muestra el menú principal
     
@@ -31,7 +30,8 @@ using consumoApi;
             "Cada uno de ellos estaba dispuesto a darlo todo en la arena de combate, pues solo uno podría reclamar el Trono de Hierro.\n" +
             "¡Que comience la batalla y que el mejor guerrero prevalezca!\n";
 
-        foreach (char c in historia) // Imprime cada carácter con un retraso para crear un efecto de texto lento
+        // Imprime cada carácter de la historia con un retraso para crear un efecto de texto lento
+        foreach (char c in historia)
         {
             Console.Write(c);
             Thread.Sleep(10); // Retrasa la impresión de cada carácter
@@ -59,6 +59,7 @@ using consumoApi;
             Console.Write("Selecciona una opción (1, 2 o 3): ");
         }
 
+        // Ejecuta la acción correspondiente según la opción elegida
         switch (opcion)
         {
             case 1:
@@ -82,86 +83,89 @@ using consumoApi;
 
     // Maneja la lógica para jugar
     static void Jugar()
-{
-    List<Personaje> personajes = CrearPersonajes(); // Crea la lista de personajes
-
-    // Mostrar los personajes y permitir que el usuario elija
-    Console.WriteLine("Elige tu personaje para el combate:");
-    for (int i = 0; i < personajes.Count; i++)
     {
-        Console.WriteLine($"Personaje {i + 1}:");
-        personajes[i].MostrarInformacion(); // Muestra la información del personaje
-        Console.WriteLine();
-    }
+        List<Personaje> personajes = CrearPersonajes(); // Crea la lista de personajes
 
-    int eleccion;
-    // Lee la selección del usuario y verifica si es válida
-    do
-    {
-        Console.Write($"Selecciona un número del 1 al {personajes.Count}: ");
-    } while (!int.TryParse(Console.ReadLine(), out eleccion) || eleccion < 1 || eleccion > personajes.Count);
-
-    Personaje personajeElegido = personajes[eleccion - 1]; // Selecciona el personaje elegido
-
-    // Verifica si el personajeElegido no es nulo
-    if (personajeElegido != null)
-    {
-        Console.WriteLine("Has elegido a:");
-        personajeElegido.MostrarInformacion(); // Muestra la información del personaje elegido
-
-        // Iniciar la batalla
-        Batalla batalla = new Batalla();
-        bool ganoTodasLasBatallas = true;
-
+        // Mostrar los personajes y permitir que el usuario elija
+        Console.WriteLine("Elige tu personaje para el combate:");
         for (int i = 0; i < personajes.Count; i++)
         {
-            if (i != eleccion - 1)
-            {
-                Console.WriteLine($"\nBatalla contra {personajes[i].GetNombre()} ({personajes[i].GetTipo()}):");
-                batalla.IniciarBatalla(personajeElegido, personajes[i]);
+            Console.WriteLine($"Personaje {i + 1}:");
+            personajes[i].MostrarInformacion(); // Muestra la información del personaje
+            Console.WriteLine();
+        }
 
-                if (!personajeElegido.EstaVivo())
+        int eleccion;
+        // Lee la selección del usuario y verifica si es válida
+        do
+        {
+            Console.Write($"Selecciona un número del 1 al {personajes.Count}: ");
+        } while (!int.TryParse(Console.ReadLine(), out eleccion) || eleccion < 1 || eleccion > personajes.Count);
+
+        Personaje personajeElegido = personajes[eleccion - 1]; // Selecciona el personaje elegido
+
+        // Verifica si el personajeElegido no es nulo
+        if (personajeElegido != null)
+        {
+            Console.WriteLine("Has elegido a:");
+            personajeElegido.MostrarInformacion(); // Muestra la información del personaje elegido
+
+            // Iniciar la batalla
+            Batalla batalla = new Batalla();
+            bool ganoTodasLasBatallas = true;
+
+            // Lucha contra todos los personajes excepto el elegido
+            for (int i = 0; i < personajes.Count; i++)
+            {
+                if (i != eleccion - 1)
                 {
-                    Console.WriteLine("¡Has sido derrotado!");
-                    ganoTodasLasBatallas = false;
-                    break;
+                    Console.WriteLine($"\nBatalla contra {personajes[i].GetNombre()} ({personajes[i].GetTipo()}):");
+                    batalla.IniciarBatalla(personajeElegido, personajes[i]);
+
+                    // Verifica si el personajeElegido sigue vivo
+                    if (!personajeElegido.EstaVivo())
+                    {
+                        Console.WriteLine("¡Has sido derrotado!");
+                        ganoTodasLasBatallas = false;
+                        break;
+                    }
                 }
             }
-        }
 
-        if (ganoTodasLasBatallas)
-        {
-            Console.WriteLine("¡Has vencido a todos los oponentes!");
-            Console.WriteLine("¡Felicidades! 🏆✨ Eres el legítimo ganador del Trono de Hierro. Tu destreza y valentía en el campo de batalla han demostrado ser incomparables. Has vencido a todos tus rivales y reclamado el poder supremo. ¡Disfruta de tu triunfo y que tu reinado sea recordado como el más glorioso de todos!");
+            // Si el personajeElegido ha ganado todas las batallas
+            if (ganoTodasLasBatallas)
+            {
+                Console.WriteLine("¡Has vencido a todos los oponentes!");
+                Console.WriteLine("¡Felicidades! 🏆✨ Eres el legítimo ganador del Trono de Hierro. Tu destreza y valentía en el campo de batalla han demostrado ser incomparables. Has vencido a todos tus rivales y reclamado el poder supremo. ¡Disfruta de tu triunfo y que tu reinado sea recordado como el más glorioso de todos!");
 
-            // Agregar el ganador al historial
-            Historial.AgregarGanador("historialGanadores.json", personajeElegido);
-        }
+                // Agregar el ganador al historial
+                Historial.AgregarGanador("historialGanadores.json", personajeElegido);
+            }
 
-        // Preguntar si el usuario quiere jugar otra vez
-        Console.WriteLine("¿Quieres jugar otra vez? (PRESIONA 1 PARA SEGUIR JUGANDO / PRESIONA 0 PARA DEJAR DE JUGAR)");
-        int respuesta;
-        int.TryParse(Console.ReadLine(), out respuesta);
-        if (respuesta == 1)
-        {
-            Jugar();
-        }
-        else if (respuesta == 0)
-        {
-            MostrarMenuPrincipal();
+            // Preguntar si el usuario quiere jugar otra vez
+            Console.WriteLine("¿Quieres jugar otra vez? (PRESIONA 1 PARA SEGUIR JUGANDO / PRESIONA 0 PARA DEJAR DE JUGAR)");
+            int respuesta;
+            int.TryParse(Console.ReadLine(), out respuesta);
+            if (respuesta == 1)
+            {
+                Jugar(); // Llama a la función para jugar nuevamente
+            }
+            else if (respuesta == 0)
+            {
+                MostrarMenuPrincipal(); // Regresa al menú principal
+            }
+            else
+            {
+                Console.WriteLine("Respuesta no válida. Regresando al menú principal.");
+                MostrarMenuPrincipal(); // Regresa al menú principal
+            }
         }
         else
         {
-            Console.WriteLine("Respuesta no válida. Regresando al menú principal.");
-            MostrarMenuPrincipal();
+            Console.WriteLine("El personaje seleccionado no es válido. Regresando al menú principal.");
+            MostrarMenuPrincipal(); // Regresa al menú principal
         }
     }
-    else
-    {
-        Console.WriteLine("El personaje seleccionado no es válido. Regresando al menú principal.");
-        MostrarMenuPrincipal();
-    }
-}
 
     // Muestra el historial de ganadores
     static void VerHistorial()
@@ -178,7 +182,8 @@ using consumoApi;
         ManejoApi consumoApi = new ManejoApi(); // Crea una instancia de ManejoApi
         List<string> nombresDePersonajes = consumoApi.ObtenerNombresDePersonajes(); // Obtiene nombres de personajes de la API
 
-        if (nombresDePersonajes.Count < 10) // Verifica si hay suficientes nombres
+        // Verifica si hay suficientes nombres para crear personajes
+        if (nombresDePersonajes.Count < 10)
         {
             throw new Exception("No hay suficientes nombres de personajes en la API."); // Lanza una excepción si no hay suficientes nombres
         }
