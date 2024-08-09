@@ -9,70 +9,72 @@ using consumoApi;
 
     
         MostrarHistoria(); // Muestra la historia de forma lenta
+        Thread.Sleep(1500);
         MostrarMenuPrincipal(); // Muestra el menú principal
     
 
     // Muestra la historia de forma lenta
     static void MostrarHistoria()
+{
+    string historia = "Hace mucho tiempo, en un reino lejano, diez valientes luchadores se alzaron para reclamar el Trono de Hierro.\n" +
+        "Cada uno de estos guerreros poseía habilidades únicas y una fuerza incomparable, y se enfrentaron en batallas épicas.\n" +
+        "El Guerrero, con su espada ardiente, luchaba con un fervor inquebrantable.\n" +
+        "El Mago, conocido por su sabiduría, usaba sus poderes arcanos para dominar a sus enemigos.\n" +
+        "El Arquero, apodado el Preciso, disparaba flechas con una exactitud letal.\n" +
+        "El Berserker, con su martillo colosal, aplastaba a sus adversarios con una fuerza implacable.\n" +
+        "La Hechicera, conjurando hechizos oscuros, aterrorizaba a sus adversarios con su magia.\n" +
+        "El Ágil Asesino se movía con una velocidad y sigilo insuperables.\n" +
+        "El Paladín Valiente defendía la justicia con su escudo y espada, luchando con honor.\n" +
+        "El Druida, invocador de la naturaleza, usaba su poder para protegerse y atacar.\n" +
+        "La Francotiradora cazaba a sus enemigos desde la distancia, con gran precisión.\n" +
+        "El Bárbaro Feroz arremetía con una furia que parecía imparable.\n" +
+        "Cada uno de ellos estaba dispuesto a darlo todo en la arena de combate, pues solo uno podría reclamar el Trono de Hierro.\n" +
+        "¡Que comience la batalla y que el mejor guerrero prevalezca!\n";
+
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    foreach (char c in historia)
     {
-        string historia = "Hace mucho tiempo, en un reino lejano, diez valientes luchadores se alzaron para reclamar el Trono de Hierro.\n" +
-            "Cada uno de estos guerreros poseía habilidades únicas y una fuerza incomparable, y se enfrentaron en batallas épicas.\n" +
-            "El Guerrero, con su espada ardiente, luchaba con un fervor inquebrantable.\n" +
-            "El Mago, conocido por su sabiduría, usaba sus poderes arcanos para dominar a sus enemigos.\n" +
-            "El Arquero, apodado el Preciso, disparaba flechas con una exactitud letal.\n" +
-            "El Berserker, con su martillo colosal, aplastaba a sus adversarios con una fuerza implacable.\n" +
-            "La Hechicera, conjurando hechizos oscuros, aterrorizaba a sus adversarios con su magia.\n" +
-            "El Ágil Asesino se movía con una velocidad y sigilo insuperables.\n" +
-            "El Paladín Valiente defendía la justicia con su escudo y espada, luchando con honor.\n" +
-            "El Druida, invocador de la naturaleza, usaba su poder para protegerse y atacar.\n" +
-            "La Francotiradora cazaba a sus enemigos desde la distancia, con gran precisión.\n" +
-            "El Bárbaro Feroz arremetía con una furia que parecía imparable.\n" +
-            "Cada uno de ellos estaba dispuesto a darlo todo en la arena de combate, pues solo uno podría reclamar el Trono de Hierro.\n" +
-            "¡Que comience la batalla y que el mejor guerrero prevalezca!\n";
-
-        // Imprime cada carácter de la historia con un retraso para crear un efecto de texto lento
-        foreach (char c in historia)
-        {
-            Console.Write(c);
-            Thread.Sleep(10); // Retrasa la impresión de cada carácter
-        }
-
-        Console.WriteLine("\n"); // Salto de línea al final de la historia
+        Console.Write(c);
+        Thread.Sleep(15);
     }
+    Console.ResetColor();
+    Console.WriteLine("\n");
+}
 
     // Muestra el menú principal y maneja la elección del usuario
     static void MostrarMenuPrincipal()
+{
+    Console.Clear(); // Limpia la consola para un mejor aspecto
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("======== MENU PRINCIPAL ========");
+    Console.ResetColor();
+    Console.WriteLine("1. Jugar");
+    Console.WriteLine("2. Ver historial");
+    Console.WriteLine("3. Salir");
+    Console.Write("Selecciona una opción (1, 2 o 3): ");
+
+    int opcion;
+    while (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 1 || opcion > 3)
     {
-        Console.ForegroundColor = ConsoleColor.Green; // Cambia el color del texto
-        Console.WriteLine("======== MENU PRINCIPAL ========");
-        Console.ResetColor(); // Restaura el color del texto a la configuración predeterminada
-        Console.WriteLine("1. Jugar");
-        Console.WriteLine("2. Ver historial");
-        Console.WriteLine("3. Salir");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Opción no válida. Intenta de nuevo.");
+        Console.ResetColor();
         Console.Write("Selecciona una opción (1, 2 o 3): ");
-
-        int opcion;
-        // Lee la opción elegida por el usuario y verifica si es válida
-        while (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 1 || opcion > 3)
-        {
-            Console.WriteLine("Opción no válida. Intenta de nuevo.");
-            Console.Write("Selecciona una opción (1, 2 o 3): ");
-        }
-
-        // Ejecuta la acción correspondiente según la opción elegida
-        switch (opcion)
-        {
-            case 1:
-                Jugar(); // Llama a la función para jugar
-                break;
-            case 2:
-                VerHistorial(); // Llama a la función para ver el historial
-                break;
-            case 3:
-                Salir(); // Llama a la función para salir
-                break;
-        }
     }
+
+    switch (opcion)
+    {
+        case 1:
+            Jugar();
+            break;
+        case 2:
+            VerHistorial();
+            break;
+        case 3:
+            Salir();
+            break;
+    }
+}
 
     // Termina la aplicación
     static void Salir()
@@ -83,98 +85,115 @@ using consumoApi;
 
     // Maneja la lógica para jugar
     static void Jugar()
-    {
-        List<Personaje> personajes = CrearPersonajes(); // Crea la lista de personajes
+{
+    List<Personaje> personajes = CrearPersonajes();
 
-        // Mostrar los personajes y permitir que el usuario elija
-        Console.WriteLine("Elige tu personaje para el combate:");
+    Console.Clear();
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("Elige tu personaje para el combate:");
+    Console.ResetColor();
+    for (int i = 0; i < personajes.Count; i++)
+    {
+        Console.WriteLine($"Personaje {i + 1}:");
+        personajes[i].MostrarInformacion();
+        Console.WriteLine();
+    }
+
+    int eleccion;
+    do
+    {
+        Console.Write($"Selecciona un número del 1 al {personajes.Count}: ");
+    } while (!int.TryParse(Console.ReadLine(), out eleccion) || eleccion < 1 || eleccion > personajes.Count);
+
+    Personaje personajeElegido = personajes[eleccion - 1];
+    if (personajeElegido != null)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("Has elegido a:");
+        Console.ResetColor();
+        personajeElegido.MostrarInformacion();
+
+        Batalla batalla = new Batalla();
+        bool ganoTodasLasBatallas = true;
+
         for (int i = 0; i < personajes.Count; i++)
         {
-            Console.WriteLine($"Personaje {i + 1}:");
-            personajes[i].MostrarInformacion(); // Muestra la información del personaje
-            Console.WriteLine();
-        }
-
-        int eleccion;
-        // Lee la selección del usuario y verifica si es válida
-        do
-        {
-            Console.Write($"Selecciona un número del 1 al {personajes.Count}: ");
-        } while (!int.TryParse(Console.ReadLine(), out eleccion) || eleccion < 1 || eleccion > personajes.Count);
-
-        Personaje personajeElegido = personajes[eleccion - 1]; // Selecciona el personaje elegido
-
-        // Verifica si el personajeElegido no es nulo
-        if (personajeElegido != null)
-        {
-            Console.WriteLine("Has elegido a:");
-            personajeElegido.MostrarInformacion(); // Muestra la información del personaje elegido
-
-            // Iniciar la batalla
-            Batalla batalla = new Batalla();
-            bool ganoTodasLasBatallas = true;
-
-            // Lucha contra todos los personajes excepto el elegido
-            for (int i = 0; i < personajes.Count; i++)
+            if (i != eleccion - 1)
             {
-                if (i != eleccion - 1)
-                {
-                    Console.WriteLine($"\nBatalla contra {personajes[i].GetNombre()} ({personajes[i].GetTipo()}):");
-                    batalla.IniciarBatalla(personajeElegido, personajes[i]);
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"\nBatalla contra {personajes[i].GetNombre()} ({personajes[i].GetTipo()}):");
+                Console.ResetColor();
+                batalla.IniciarBatalla(personajeElegido, personajes[i]);
 
-                    // Verifica si el personajeElegido sigue vivo
-                    if (!personajeElegido.EstaVivo())
-                    {
-                        Console.WriteLine("¡Has sido derrotado!");
-                        ganoTodasLasBatallas = false;
-                        break;
-                    }
+                if (!personajeElegido.EstaVivo())
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("¡Has sido derrotado!");
+                    Thread.Sleep(2000);
+                    Console.ResetColor();
+                    ganoTodasLasBatallas = false;
+                    break;
                 }
             }
+        }
 
-            // Si el personajeElegido ha ganado todas las batallas
-            if (ganoTodasLasBatallas)
-            {
-                Console.WriteLine("¡Has vencido a todos los oponentes!");
-                Console.WriteLine("¡Felicidades! 🏆✨ Eres el legítimo ganador del Trono de Hierro. Tu destreza y valentía en el campo de batalla han demostrado ser incomparables. Has vencido a todos tus rivales y reclamado el poder supremo. ¡Disfruta de tu triunfo y que tu reinado sea recordado como el más glorioso de todos!");
+        if (ganoTodasLasBatallas)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("¡Has vencido a todos los oponentes!");
+            Console.WriteLine("¡Felicidades! 🏆✨ Eres el legítimo ganador del Trono de Hierro. Tu destreza y valentía en el campo de batalla han demostrado ser incomparables. Has vencido a todos tus rivales y reclamado el poder supremo. ¡Disfruta de tu triunfo y que tu reinado sea recordado como el más glorioso de todos!");
+            Thread.Sleep(2000);
+            Console.ResetColor();
+            Historial.AgregarGanador("historialGanadores.json", personajeElegido);
+        }
 
-                // Agregar el ganador al historial
-                Historial.AgregarGanador("historialGanadores.json", personajeElegido);
-            }
-
-            // Preguntar si el usuario quiere jugar otra vez
-            Console.WriteLine("¿Quieres jugar otra vez? (PRESIONA 1 PARA SEGUIR JUGANDO / PRESIONA 0 PARA DEJAR DE JUGAR)");
-            int respuesta;
-            int.TryParse(Console.ReadLine(), out respuesta);
-            if (respuesta == 1)
-            {
-                Jugar(); // Llama a la función para jugar nuevamente
-            }
-            else if (respuesta == 0)
-            {
-                MostrarMenuPrincipal(); // Regresa al menú principal
-            }
-            else
-            {
-                Console.WriteLine("Respuesta no válida. Regresando al menú principal.");
-                MostrarMenuPrincipal(); // Regresa al menú principal
-            }
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("¿Quieres jugar otra vez? (PRESIONA 1 PARA SEGUIR JUGANDO / PRESIONA 0 PARA DEJAR DE JUGAR)");
+        Console.ResetColor();
+        int respuesta;
+        int.TryParse(Console.ReadLine(), out respuesta);
+        if (respuesta == 1)
+        {
+            Jugar();
+        }
+        else if (respuesta == 0)
+        {
+            MostrarMenuPrincipal();
         }
         else
         {
-            Console.WriteLine("El personaje seleccionado no es válido. Regresando al menú principal.");
-            MostrarMenuPrincipal(); // Regresa al menú principal
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Respuesta no válida. Regresando al menú principal.");
+            Console.ResetColor();
+            MostrarMenuPrincipal();
         }
     }
+    else
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("El personaje seleccionado no es válido. Regresando al menú principal.");
+        Console.ResetColor();
+        MostrarMenuPrincipal();
+    }
+}
 
     // Muestra el historial de ganadores
     static void VerHistorial()
-    {
-        Historial.MostrarPodio("historialGanadores.json"); // Muestra el podio de ganadores
+{
+    Console.Clear();
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("======== HISTORIAL DE GANADORES ========");
+    Console.ResetColor();
+    Historial.MostrarPodio("historialGanadores.json");
 
-        // Regresar al menú principal inmediatamente
-        MostrarMenuPrincipal();
-    }
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("\nRegresar al menú principal...");
+    Console.ResetColor();
+    // Espera un momento antes de regresar al menú
+    Thread.Sleep(6000);
+    MostrarMenuPrincipal();
+}
 
     // Crea una lista de personajes
     static List<Personaje> CrearPersonajes()

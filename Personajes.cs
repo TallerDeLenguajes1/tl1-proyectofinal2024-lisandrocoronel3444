@@ -106,37 +106,54 @@ using System.Text.Json.Serialization;
 
             int ataque = (int)(ataqueBase + (multiplicador * ataqueBase));
             int defensa = Enemigo.GetArmadura() * Enemigo.GetVelocidad();
-            const int constanteDeAjuste = 5;
+            const int constanteDeAjuste = 4;
 
             int danio = ((ataque) - defensa) / constanteDeAjuste;
             if (danio > 0)
             {
-                Enemigo.RecibirDanio(danio);
+                
                 Console.WriteLine($"{this.nombre} provoca {danio} de daño a {Enemigo.GetNombre()} con un golpe de dado {suerte} (multiplicador {multiplicador * 100}%)");
+                Thread.Sleep(2000);
+                if(Enemigo.GetSalud() <= 0){
+                Console.WriteLine($"{Enemigo.GetNombre()} Ha muerto a manos de {this.nombre}");
+                }
+                Thread.Sleep(2000);
+                Enemigo.RecibirDanio(danio);
+                
+                if (suerte == 6)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("¡Golpe crítico!");
+                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
+                    Console.ResetColor();
+                }
             }
             else
             {
                 Console.WriteLine($"{Enemigo.GetNombre()} bloqueó el ataque!");
+                Thread.Sleep(2000);
             }
         }
 
         public void RecibirDanio(int danio)
         {
             this.salud -= danio;
-            if (this.salud < 0)
+            if (this.salud <= 0)
             {
+
                 this.salud = 0;
             }
         }
 
         public void Defender()
         {
-            this.armadura += 2; // Incrementa la armadura temporalmente
+            this.armadura += 1; // Incrementa la armadura temporalmente
         }
 
         public void Curar()
         {
-            this.salud += 15; // Cura una cantidad fija de salud
+            this.salud += 12; // Cura una cantidad fija de salud
             if (this.salud > 100)
             {
                 this.salud = 100;
@@ -154,16 +171,19 @@ using System.Text.Json.Serialization;
             {
                 Defender();
                 Console.WriteLine($"{this.nombre} se defiende.");
+                Thread.Sleep(2000);
             }
             else if (num == 3 || num == 1)
             {
                 Curar();
-                Console.WriteLine($"{this.nombre} se cura 15 puntos de salud.");
+                Console.WriteLine($"{this.nombre} se cura 12 puntos de salud.");
+                Thread.Sleep(2000);
             }
             else
             {
                 Atacar(enemigo);
                 Console.WriteLine($"{this.nombre} ataca a {enemigo.GetNombre()}.");
+                Thread.Sleep(2000);
             }
         }
 
