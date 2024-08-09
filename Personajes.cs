@@ -8,41 +8,11 @@ using System.Text.Json.Serialization;
 
     public class Personaje
     {
-        private List<string> frasesAtaque = new List<string>
-        {
-            "¡Prepárate para sentir mi furia!",
-    "¡Esto es solo el comienzo!",
-    "¡Mi espada nunca falla!",
-    "¡Siente el poder de mi ataque!",
-    "¡Te haré lamentar haberte enfrentado a mí!",
-    "¡Mi fuerza es imparable!",
-    "¡Sufre la ira de mi ataque!",
-    "¡Este golpe será el último que sientas!",
-    "¡El suelo temblará bajo mi poder!",
-    "¡Voy a aplastarte con mi fuerza!",
-    "¡Tu derrota es inevitable!",
-    "¡No tienes idea de lo que te espera!",
-    "¡Sentirás el peso de mi furia!",
-    "¡Mi ataque te llevará a la derrota!",
-    "¡Prepárate para la tormenta!"
-        };
+        private List<string> frasesAtaque;
+        private List<string> frasesDefensa;
+        private List<string> frasesCuracion;
 
-        private List<string> frasesDefensa = new List<string>
-        {
-            "¡No pasarás!",
-            "¡Mi escudo te detendrá!",
-            "¡Estás en mi zona de defensa!",
-            "¡Tu ataque no me alcanzará!"
-        };
-
-        private List<string> frasesCuracion = new List<string>
-        {
-            "¡Me recupero con fuerza!",
-            "¡La magia de la curación está funcionando!",
-            "¡No me rendiré tan fácilmente!",
-            "¡Volveré más fuerte que nunca!"
-        };
-
+        string archivoFrases = "frases.json";
         private Random random1 = new Random();
 
         // Datos
@@ -68,9 +38,20 @@ using System.Text.Json.Serialization;
         private int armadura;
         [JsonInclude]
         private int salud;
+        private static Dictionary<string, List<string>> CargarFrasesDesdeArchivo(string nombreArchivo)
+        {
+            if (!File.Exists(nombreArchivo))
+            {
+                throw new FileNotFoundException("El archivo de frases no se encontró.");
+            }
+
+            string jsonString = File.ReadAllText(nombreArchivo);
+            return JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonString) 
+                   ?? throw new InvalidOperationException("Error al deserializar el archivo de frases.");
+        }
 
         // Constructor
-        public Personaje(string tipo, string nombre, string apodo, DateTime fechaDeNacimiento, int velocidad, int destreza, int fuerza, int armadura)
+        public Personaje(string tipo, string nombre, string apodo, DateTime fechaDeNacimiento, int velocidad, int destreza, int fuerza, int armadura, string nombArchivo)
         {
             this.tipo = tipo;
             this.nombre = nombre;
@@ -83,6 +64,10 @@ using System.Text.Json.Serialization;
             this.fuerza = fuerza;
             this.armadura = armadura;
             this.salud = 100;
+            var frases = CargarFrasesDesdeArchivo(archivoFrases);
+            frasesAtaque = frases["frasesAtaque"];
+            frasesDefensa = frases["frasesDefensa"];
+            frasesCuracion = frases["frasesCuracion"];
         }
 
         // Métodos Getter

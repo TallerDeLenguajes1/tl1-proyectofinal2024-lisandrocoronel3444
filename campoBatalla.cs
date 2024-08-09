@@ -1,4 +1,5 @@
 using personasjesDelJuego;
+using persistenciaJson;
 
 namespace escenarioBatalla
 {
@@ -28,6 +29,8 @@ namespace escenarioBatalla
                 if (personaje2.GetSalud() <= 0)
                 {
                     Console.WriteLine($"El personaje {personaje2.GetNombre()} Ha muerto!");
+                    string nombreArchivo = "personajes.json";
+                    PersonajesJson.EliminarPersonaje(personaje2, nombreArchivo);
                     Thread.Sleep(3000);
                     
                     break;

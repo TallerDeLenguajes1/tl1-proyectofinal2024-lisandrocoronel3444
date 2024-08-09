@@ -1,19 +1,19 @@
 [
   {
     "tipo": "Guerrero",
-    "nombre": "Leonard",
+    "nombre": "Aatrox",
     "apodo": "Espada de Fuego",
     "fechaDeNacimiento": "1990-01-01T00:00:00",
     "edad": 34,
     "velocidad": 4,
-    "destreza": 7,
-    "fuerza": 8,
-    "armadura": 3,
+    "destreza": 10,
+    "fuerza": 30,
+    "armadura": 10,
     "salud": 100
   },
   {
     "tipo": "Mago",
-    "nombre": "Merlin",
+    "nombre": "Ahri",
     "apodo": "El Sabio",
     "fechaDeNacimiento": "1995-05-15T00:00:00",
     "edad": 29,
@@ -25,7 +25,7 @@
   },
   {
     "tipo": "Arquero",
-    "nombre": "Kay",
+    "nombre": "Akali",
     "apodo": "La Torreta",
     "fechaDeNacimiento": "1992-07-20T00:00:00",
     "edad": 32,
@@ -37,7 +37,7 @@
   },
   {
     "tipo": "Berserker",
-    "nombre": "Aldric",
+    "nombre": "Akshan",
     "apodo": "El Martillo",
     "fechaDeNacimiento": "1988-04-10T00:00:00",
     "edad": 36,
@@ -49,7 +49,7 @@
   },
   {
     "tipo": "Hechicera",
-    "nombre": "Morgana",
+    "nombre": "Alistar",
     "apodo": "La Hechicera",
     "fechaDeNacimiento": "1994-03-25T00:00:00",
     "edad": 30,
@@ -61,7 +61,7 @@
   },
   {
     "tipo": "Asesino",
-    "nombre": "Robin",
+    "nombre": "Amumu",
     "apodo": "El \u00C1gil",
     "fechaDeNacimiento": "1993-09-13T00:00:00",
     "edad": 31,
@@ -73,7 +73,7 @@
   },
   {
     "tipo": "Palad\u00EDn",
-    "nombre": "Thorin",
+    "nombre": "Anivia",
     "apodo": "El Valiente",
     "fechaDeNacimiento": "1987-12-05T00:00:00",
     "edad": 37,
@@ -85,7 +85,7 @@
   },
   {
     "tipo": "Druida",
-    "nombre": "Gandalf",
+    "nombre": "Annie",
     "apodo": "El Blanco",
     "fechaDeNacimiento": "1985-11-19T00:00:00",
     "edad": 39,
@@ -97,7 +97,7 @@
   },
   {
     "tipo": "Cazadora",
-    "nombre": "Eleanor",
+    "nombre": "Aphelios",
     "apodo": "La Francotiradora",
     "fechaDeNacimiento": "1991-06-22T00:00:00",
     "edad": 33,
@@ -109,7 +109,7 @@
   },
   {
     "tipo": "Barbaro",
-    "nombre": "Bjorn",
+    "nombre": "Ashe",
     "apodo": "El Feroz",
     "fechaDeNacimiento": "1989-08-30T00:00:00",
     "edad": 35,

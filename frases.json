@@ -1,0 +1,31 @@
+{
+    "frasesAtaque": [
+      "¡Prepárate para sentir mi furia!",
+      "¡Esto es solo el comienzo!",
+      "¡Mi espada nunca falla!",
+      "¡Siente el poder de mi ataque!",
+      "¡Te haré lamentar haberte enfrentado a mí!",
+      "¡Mi fuerza es imparable!",
+      "¡Sufre la ira de mi ataque!",
+      "¡Este golpe será el último que sientas!",
+      "¡El suelo temblará bajo mi poder!",
+      "¡Voy a aplastarte con mi fuerza!",
+      "¡Tu derrota es inevitable!",
+      "¡No tienes idea de lo que te espera!",
+      "¡Sentirás el peso de mi furia!",
+      "¡Mi ataque te llevará a la derrota!",
+      "¡Prepárate para la tormenta!"
+    ],
+    "frasesDefensa": [
+      "¡No pasarás!",
+      "¡Mi escudo te detendrá!",
+      "¡Estás en mi zona de defensa!",
+      "¡Tu ataque no me alcanzará!"
+    ],
+    "frasesCuracion": [
+      "¡Me recupero con fuerza!",
+      "¡La magia de la curación está funcionando!",
+      "¡No me rendiré tan fácilmente!",
+      "¡Volveré más fuerte que nunca!"
+    ]
+  }
