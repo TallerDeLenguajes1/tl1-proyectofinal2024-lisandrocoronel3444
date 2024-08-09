@@ -4,7 +4,7 @@ En un mundo en guerra, diez guerreros legendarios se enfrentaron por el trono de
 ### Modalidad:
 El usuario elije entre 10 guerreros legendarios con diferentes caracteristicas y el guerrero seleccionado es el encargado de enfrentarse a los 9 restantes en una batalla por turnos.
 Tienes tres opciones atacar, defender o curarte.
-Al atacar se lanzara un dado del 1 al 6 para aumentar el porcentaje de daño
+Al atacar se lanzara un dado del 1 al 6 para aumentar el porcentaje de daño.
 Defenderte aumenta la defensa de tu armadura en 1 punto
 y por ultimo, curarse regenera 12 puntos de vida.
 Cada vez que derrotes un guerrero legendario tu salud volvera a 100 para enfrentarte al siguiente.
