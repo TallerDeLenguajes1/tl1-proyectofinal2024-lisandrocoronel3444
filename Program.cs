@@ -217,13 +217,7 @@ static void VerHistorial()
         new Personaje("Guerrero", nombresDePersonajes[0], "Espada de Fuego", new DateTime(1990, 1, 1), 4, 10, 30, 10, "frases.json"),
         new Personaje("Mago", nombresDePersonajes[1], "El Sabio", new DateTime(1995, 5, 15), 6, 10, 7, 3,"frases.json"),
         new Personaje("Arquero", nombresDePersonajes[2], "La Torreta", new DateTime(1992, 7, 20), 10, 8, 6, 2,"frases.json"),
-        new Personaje("Berserker", nombresDePersonajes[3], "El Martillo", new DateTime(1988, 4, 10), 5, 6, 9, 4,"frases.json"),
-        new Personaje("Hechicera", nombresDePersonajes[4], "La Hechicera", new DateTime(1994, 3, 25), 7, 9, 6, 3,"frases.json"),
-        new Personaje("Asesino", nombresDePersonajes[5], "El Ágil", new DateTime(1993, 9, 13), 9, 7, 5, 3,"frases.json"),
-        new Personaje("Paladín", nombresDePersonajes[6], "El Valiente", new DateTime(1987, 12, 5), 6, 8, 8, 5,"frases.json"),
-        new Personaje("Druida", nombresDePersonajes[7], "El Blanco", new DateTime(1985, 11, 19), 5, 10, 6, 4,"frases.json"),
-        new Personaje("Cazadora", nombresDePersonajes[8], "La Francotiradora", new DateTime(1991, 6, 22), 8, 9, 7, 3,"frases.json"),
-        new Personaje("Barbaro", nombresDePersonajes[9], "El Feroz", new DateTime(1989, 8, 30), 7, 6, 9, 4,"frases.json")
+        
     };
     
 
