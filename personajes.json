@@ -12,18 +12,6 @@
     "salud": 100
   },
   {
-    "tipo": "Mago",
-    "nombre": "Ahri",
-    "apodo": "El Sabio",
-    "fechaDeNacimiento": "1995-05-15T00:00:00",
-    "edad": 29,
-    "velocidad": 6,
-    "destreza": 10,
-    "fuerza": 7,
-    "armadura": 3,
-    "salud": 100
-  },
-  {
     "tipo": "Arquero",
     "nombre": "Akali",
     "apodo": "La Torreta",
@@ -33,90 +21,6 @@
     "destreza": 8,
     "fuerza": 6,
     "armadura": 2,
-    "salud": 100
-  },
-  {
-    "tipo": "Berserker",
-    "nombre": "Akshan",
-    "apodo": "El Martillo",
-    "fechaDeNacimiento": "1988-04-10T00:00:00",
-    "edad": 36,
-    "velocidad": 5,
-    "destreza": 6,
-    "fuerza": 9,
-    "armadura": 4,
-    "salud": 100
-  },
-  {
-    "tipo": "Hechicera",
-    "nombre": "Alistar",
-    "apodo": "La Hechicera",
-    "fechaDeNacimiento": "1994-03-25T00:00:00",
-    "edad": 30,
-    "velocidad": 7,
-    "destreza": 9,
-    "fuerza": 6,
-    "armadura": 3,
-    "salud": 100
-  },
-  {
-    "tipo": "Asesino",
-    "nombre": "Amumu",
-    "apodo": "El \u00C1gil",
-    "fechaDeNacimiento": "1993-09-13T00:00:00",
-    "edad": 31,
-    "velocidad": 9,
-    "destreza": 7,
-    "fuerza": 5,
-    "armadura": 3,
-    "salud": 100
-  },
-  {
-    "tipo": "Palad\u00EDn",
-    "nombre": "Anivia",
-    "apodo": "El Valiente",
-    "fechaDeNacimiento": "1987-12-05T00:00:00",
-    "edad": 37,
-    "velocidad": 6,
-    "destreza": 8,
-    "fuerza": 8,
-    "armadura": 5,
-    "salud": 100
-  },
-  {
-    "tipo": "Druida",
-    "nombre": "Annie",
-    "apodo": "El Blanco",
-    "fechaDeNacimiento": "1985-11-19T00:00:00",
-    "edad": 39,
-    "velocidad": 5,
-    "destreza": 10,
-    "fuerza": 6,
-    "armadura": 4,
-    "salud": 100
-  },
-  {
-    "tipo": "Cazadora",
-    "nombre": "Aphelios",
-    "apodo": "La Francotiradora",
-    "fechaDeNacimiento": "1991-06-22T00:00:00",
-    "edad": 33,
-    "velocidad": 8,
-    "destreza": 9,
-    "fuerza": 7,
-    "armadura": 3,
-    "salud": 100
-  },
-  {
-    "tipo": "Barbaro",
-    "nombre": "Ashe",
-    "apodo": "El Feroz",
-    "fechaDeNacimiento": "1989-08-30T00:00:00",
-    "edad": 35,
-    "velocidad": 7,
-    "destreza": 6,
-    "fuerza": 9,
-    "armadura": 4,
     "salud": 100
   }
 ]

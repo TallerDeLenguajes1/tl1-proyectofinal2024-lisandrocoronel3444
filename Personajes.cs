@@ -51,7 +51,7 @@ using System.Text.Json.Serialization;
         }
 
         // Constructor
-        public Personaje(string tipo, string nombre, string apodo, DateTime fechaDeNacimiento, int velocidad, int destreza, int fuerza, int armadura, string nombArchivo)
+        public Personaje(string tipo, string nombre, string apodo, DateTime fechaDeNacimiento, int velocidad, int destreza, int fuerza, int armadura)
         {
             this.tipo = tipo;
             this.nombre = nombre;
